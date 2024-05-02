@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nervous-blue-chip",
-    "slug": "snack-83f18141-e9ae-429c-8211-a855831845a9",
+    "name": "expo-test",
+    "slug": "expo-test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
