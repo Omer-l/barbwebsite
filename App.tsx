@@ -27,8 +27,7 @@ const SignInScreen = () => {
         <TextInput label="Password" />
         <Button  mode="elevated" onPress={() => setUser(true)}> Continue </Button>
         <Divider style={{marginTop: "60%"}} />
-        <Button mode="outlined">      <Ionicons name="google" size={32} color="black" />
-          Continue with Google </Button>
+        <Button mode="outlined"> Continue with Google </Button>
         <Button mode="outlined"> Continue with Facebook </Button>
       </View>
   );
