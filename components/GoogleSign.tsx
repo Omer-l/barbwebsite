@@ -1,17 +1,15 @@
+import React, {useEffect, useState} from "react";
+import { Alert } from 'react-native';
+import {Button} from "react-native-paper";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { ANDROID_CLIENT_ID, IOS_CLIENT_ID, WEB_CLIENT_ID } from process.env;
-import React, {useEffect, useState} from "react";
-import {Button} from "react-native-paper";
-import {TokenResponse} from "expo-auth-session";
-
+import { ANDROID_CLIENT_ID, IOS_CLIENT_ID, WEB_CLIENT_ID } from "../env";
 
 const config = {
     // androidClientId: process.env.ANDROID_CLIENT_ID,
     // iosClientId: process.env.IOS_CLIENT_ID,
-    // webClientId: process.env.WEB_CLIENT_ID,
-    webClientId: "53241042910-fl31bnd5n2q0ove396h4og25fup0173f.apps.googleusercontent.com",
+    webClientId: WEB_CLIENT_ID,
 }
 
 const GoogleButton = () => {

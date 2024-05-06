@@ -5,9 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // You can import supported modules from npm
 import { TextInput, Card, BottomNavigation, Button, Divider } from 'react-native-paper';
-import GoogleButton from './components/GoogleSign'
-// or any files within the Snack
-import Ionicons from '@expo/vector-icons/Ionicons';
+import GoogleButton from './components/GoogleSign';
 
 const Stack = createStackNavigator(); //register/login
 const Tab = createBottomTabNavigator();
