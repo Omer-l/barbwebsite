@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import { Alert } from 'react-native';
 import {Button} from "react-native-paper";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
@@ -7,8 +6,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ANDROID_CLIENT_ID, IOS_CLIENT_ID, WEB_CLIENT_ID } from "../env";
 
 const config = {
-    // androidClientId: process.env.ANDROID_CLIENT_ID,
-    // iosClientId: process.env.IOS_CLIENT_ID,
+    androidClientId: ANDROID_CLIENT_ID,
+    iosClientId: IOS_CLIENT_ID,
     webClientId: WEB_CLIENT_ID,
 }
 
