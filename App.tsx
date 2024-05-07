@@ -33,14 +33,14 @@ const SignInScreen = () => {
 }
 
 // -------------------- AFTER SIGN IN --------------------
-const Home = () => {
+const HomeScreen = () => {
   return (
       <View>
       </View>
   )
 }
 
-const Profile = () => {
+const ProfileScreen = () => {
   const { setUser } = useContext(AuthContext);
   return (
       <View>
@@ -49,13 +49,30 @@ const Profile = () => {
   );
 }
 
-const HomeTabs = () => {
-  return (
-      <Tab.Navigator screenOptions={{tabBarVisible:true, headerShown: false}}>
-        <Tab.Screen name="Home" component={Home}/>
-        <Tab.Screen name="Profile" component={Profile}/>
-      </Tab.Navigator>
-  );
+// const HomeTabs = () => {
+//   return (
+//       <Tab.Navigator screenOptions={{tabBarVisible:true, headerShown: false}}>
+//         <Tab.Screen name="Home" component={HomeScreen}/>
+//         <Tab.Screen name="Profile" component={ProfileScreen}/>
+//       </Tab.Navigator>
+//   );
+// }
+
+const MyComponent = () => {
+    const [index, setIndex] = useState(0);
+    const [routes] = useState([
+        {key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
+        {key: 'profile', title: 'Profile', focusedIcon: 'person', unfocusedIcon: 'person-outline'},
+    ]);
+
+    const renderScene = BottomNavigation.SceneMap({
+        home: HomeScreen,
+        profile: ProfileScreen,
+    });
+
+    return (
+        <BottomNavigation navigationState={{ index, routes}} onIndexChange={setIndex} renderScene={renderScene}/>
+    );
 }
 
 // ----------------- MAIN NAVIGATOR -------------------
@@ -66,7 +83,7 @@ const MainNavigator = () => {
       <NavigationContainer>
         <Stack.Navigator>
           {hasUser ?
-              <Stack.Screen name="Home Tabs" component={HomeTabs} options={{headerShown: false,}}/>
+              <Stack.Screen name="Home Tabs" component={MyComponent} options={{headerShown: false,}}/>
               :
               <Stack.Screen name="Sign In" component={SignInScreen}/>
           }
