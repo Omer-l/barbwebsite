@@ -4,15 +4,15 @@ import { NavigationContainer, CommonActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // You can import supported modules from npm
-import { TextInput, Card, BottomNavigation, Button, Divider } from 'react-native-paper';
+import { TextInput, Card, BottomNavigation, Button, Divider, Provider as PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
 import GoogleButton from './components/GoogleSign';
-
 const Stack = createStackNavigator(); //register/login
 const Tab = createBottomTabNavigator();
 const AuthContext = createContext({
   hasUser: false,
   setUser: (b: boolean) => {},
 });
+
 
 // -------------------- BEFORE SIGN IN --------------------
 
@@ -27,7 +27,7 @@ const SignInScreen = () => {
         <Button  mode="elevated" onPress={() => setUser(true)}> Continue </Button>
         <Divider style={{marginTop: "60%"}} />
         <GoogleButton/>
-        <Button mode="outlined"> Continue with Facebook </Button>
+        <Button icon="facebook" mode="outlined"> Continue with Facebook </Button>
       </View>
   );
 }
@@ -79,7 +79,9 @@ const App = () => {
   const [hasUser, setUser] = useState(false);
   return (
       <AuthContext.Provider value={{hasUser, setUser}}>
-        <MainNavigator/>
+          <PaperProvider theme={DefaultTheme}>
+              <MainNavigator/>
+          </PaperProvider>
       </AuthContext.Provider>
   );
 }

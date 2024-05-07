@@ -66,7 +66,7 @@ const GoogleButton = () => {
 
         console.log("helloooooooooooooooooo")
         return (
-            <Button mode="outlined" onPress={() => { promptAsync() }}> Continue with Google </Button>
+            <Button icon="google" mode="outlined" onPress={() => { promptAsync() }}> Continue with Google </Button>
         );
 }
 
