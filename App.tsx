@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // You can import supported modules from npm
 import { TextInput, Card, BottomNavigation, Button, Divider, Provider as PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
 import GoogleButton from './components/GoogleSign';
+import { Icons } from './assets/my-icons';
 const Stack = createStackNavigator(); //register/login
 const Tab = createBottomTabNavigator();
 const AuthContext = createContext({
@@ -26,8 +27,8 @@ const SignInScreen = () => {
         <TextInput label="Password" />
         <Button  mode="elevated" onPress={() => setUser(true)}> Continue </Button>
         <Divider style={{marginTop: "60%"}} />
-        <GoogleButton/>
-        <Button icon="facebook" mode="outlined"> Continue with Facebook </Button>
+        <GoogleButton icon={Icons.google} />
+        <Button icon={Icons.facebook} mode="outlined"> Continue with Facebook </Button>
       </View>
   );
 }
@@ -61,8 +62,8 @@ const ProfileScreen = () => {
 const MyComponent = () => {
     const [index, setIndex] = useState(0);
     const [routes] = useState([
-        {key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
-        {key: 'profile', title: 'Profile', focusedIcon: 'person', unfocusedIcon: 'person-outline'},
+        {key: 'home', title: 'Home', focusedIcon: Icons.home.uri, unfocusedIcon: Icons.home_outline.uri},
+        {key: 'profile', title: 'Profile', focusedIcon: Icons.account, unfocusedIcon: Icons.account_outline.uri},
     ]);
 
     const renderScene = BottomNavigation.SceneMap({

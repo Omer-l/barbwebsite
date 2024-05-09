@@ -10,8 +10,11 @@ const config = {
     iosClientId: IOS_CLIENT_ID,
     webClientId: WEB_CLIENT_ID,
 }
+type GoogleProps = {
+    icon: string,
+}
 
-const GoogleButton = () => {
+const GoogleButton = (props: GoogleProps) => {
     WebBrowser.maybeCompleteAuthSession();
     const [userInfo, setUserInfo] = useState(null);
     const [request, response, promptAsync] = Google.useAuthRequest(config);
@@ -63,11 +66,9 @@ const GoogleButton = () => {
         signInWithGoogle();
     }, [response]);
 
-
-        console.log("helloooooooooooooooooo")
-        return (
-            <Button icon="google" mode="outlined" onPress={() => { promptAsync() }}> Continue with Google </Button>
-        );
-}
+    return (
+        <Button icon={props.icon} mode="outlined" onPress={() => { promptAsync() }}> Continue with Google </Button>
+    );
+};
 
 export default GoogleButton;
