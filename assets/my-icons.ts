@@ -1,6 +1,8 @@
 /** This file contains icon URI's or links for use within the code.
  * The reason for this is that it is not possible to show icons on
- * the web when using the standard library that comes with Expo. */
+ * the web when using the standard library that comes with Expo.
+ * URL for icons: https://www.svgrepo.com/
+ * Just right click the icon after searching and copy the image address*/
 export const Icons = {
     account: { uri: "https://www.svgrepo.com/show/527961/user.svg" },
     account_outline: { uri: "https://www.svgrepo.com/show/526713/user.svg" },
