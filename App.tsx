@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react';
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, SafeAreaView, StyleSheet, Image } from 'react-native';
 import { NavigationContainer, CommonActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -33,11 +33,49 @@ const SignInScreen = () => {
   );
 }
 
+const styles: StyleSheet = {
+    container: {
+
+    },
+    topPart: {
+
+    },
+    bottomPart: {
+
+    },
+    title: {
+        fontSize: 48,
+    }
+}
+
 // -------------------- AFTER SIGN IN --------------------
 const HomeScreen = () => {
-  return (
-      <View>
-      </View>
+    return (
+        <ScrollView style={styles.container}>
+            <View style={styles.topPart}>
+                <Text style={styles.title}>BarbWebsite</Text>
+                <TextInput label={"Search"}/>
+                <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
+                    <Button mode={"outlined"} onPress={() => console.log("Badge 1 Pressed")}>Badge 1</Button>
+                    <Button mode={"outlined"} onPress={() => console.log("Badge 2 Pressed")}>Badge 2</Button>
+                    <Button mode={"outlined"} onPress={() => console.log("Badge 3 Pressed")}>Badge 3</Button>
+                    <Button mode={"outlined"} onPress={() => console.log("Badge 1 Pressed")}>Badge 4</Button>
+                    <Button mode={"outlined"} onPress={() => console.log("Badge 2 Pressed")}>Badge 5</Button>
+                    <Button mode={"outlined"} onPress={() => console.log("Badge 3 Pressed")}>Badge 6</Button>
+                </ScrollView>
+                <Button mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Schedules</Button>
+            </View>
+            <View style={styles.bottomPart}>
+                <Text style={styles.title}>New Barbers</Text>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {/*    Cards here */}
+                </ScrollView>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {/*    Cards here */}
+                </ScrollView>
+                <Text style={styles.title}>Recommended</Text>
+            </View>
+        </ScrollView>
   )
 }
 
