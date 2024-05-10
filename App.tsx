@@ -92,7 +92,7 @@ const MyComponent = () => {
     });
 
     return (
-        <BottomNavigation navigationState={{ index, routes}} onIndexChange={setIndex} renderScene={renderScene}/>
+        <BottomNavigation shifting={true} navigationState={{ index, routes}} onIndexChange={setIndex} renderScene={renderScene}/>
     );
 }
 
