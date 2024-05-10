@@ -8,6 +8,10 @@ export const Icons = {
     account_outline: { uri: "https://www.svgrepo.com/show/526713/user.svg" },
     home: { uri: "https://www.svgrepo.com/show/527751/home-smile-angle.svg" },
     home_outline: { uri: "https://www.svgrepo.com/show/529026/home.svg" },
+    search: { uri: "https://www.svgrepo.com/show/522267/search.svg" },
+    search_outline: { uri: "https://www.svgrepo.com/show/508177/search-square.svg"},
+    schedule: { uri: "https://www.svgrepo.com/show/358572/schedule.svg" },
+    schedule_outline: { uri: "https://www.svgrepo.com/show/358161/schedule.svg" },
     facebook: { uri: "https://www.svgrepo.com/show/501192/facebook.svg" },
     google: {uri: "https://www.svgrepo.com/show/509971/google.svg" },
 }

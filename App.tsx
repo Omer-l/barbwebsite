@@ -41,6 +41,22 @@ const HomeScreen = () => {
   )
 }
 
+const SearchScreen = () => {
+    return (
+        <View>
+            <Text>Search</Text>
+        </View>
+    );
+}
+
+const ScheduleScreen = () => {
+    return (
+        <View>
+            <Text>Schedules</Text>
+        </View>
+    );
+}
+
 const ProfileScreen = () => {
   const { setUser } = useContext(AuthContext);
   return (
@@ -63,11 +79,15 @@ const MyComponent = () => {
     const [index, setIndex] = useState(0);
     const [routes] = useState([
         {key: 'home', title: 'Home', focusedIcon: Icons.home.uri, unfocusedIcon: Icons.home_outline.uri},
+        {key: 'search', title: 'Search', focusedIcon: Icons.search.uri, unfocusedIcon: Icons.search_outline.uri},
+        {key: 'schedule', title: 'Schedule', focusedIcon: Icons.schedule.uri, unfocusedIcon: Icons.schedule_outline.uri},
         {key: 'profile', title: 'Profile', focusedIcon: Icons.account, unfocusedIcon: Icons.account_outline.uri},
     ]);
 
     const renderScene = BottomNavigation.SceneMap({
         home: HomeScreen,
+        search: SearchScreen,
+        schedule: ScheduleScreen,
         profile: ProfileScreen,
     });
 
