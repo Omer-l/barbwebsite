@@ -47,7 +47,7 @@ const styles: StyleSheet = {
     },
 }
 
-const categoryView = () => {
+const CategoryView = () => {
     const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
     const addNewCategory = (category) => {
         setCategories([...categories, category])
@@ -64,7 +64,7 @@ const categoryView = () => {
     );
 }
 
-const newBarbersView = () => {
+const NewBarbersView = () => {
     const [newBarbers, setNewBarbers] = useState([
         { title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber2', descr: 'Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
@@ -87,13 +87,11 @@ const newBarbersView = () => {
                     <Card.Cover source={{uri: newBarber.imgUri}}/>
                 </card>
             )})}
-    </ScrollView>
+        </ScrollView>
     );
 }
 
-
-export const HomeScreen = () => {
-
+const RecommendedBarbersView = () => {
     const [recommendedBarbers, setRecommendedBarbers] = useState([
         { title: 'Barber1', descr: 'Recommended Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber2', descr: 'Recommended Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
@@ -104,32 +102,38 @@ export const HomeScreen = () => {
     const addRecommendedBarber = (newRecommendedBarber) => {
         setRecommendedBarbers([...newRecommendedBarber, newRecommendedBarber]);
     };
+    return ( <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        {recommendedBarbers.map( (recommendedBarber, index: number) => {
+            return(
+                <card style={styles.card}>
+                    <Card.Title title={recommendedBarber.title}/>
+                    <Card.Content>
+                        <Text>{recommendedBarber.descr}</Text>
+                    </Card.Content>
+                    <Card.Cover source={{uri: recommendedBarber.imgUri}}/>
+                </card>
+            )})}
+    </ScrollView>
+    );
+}
+
+export const HomeScreen = () => {
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.topPart}>
                 <Text style={styles.topTitle}>BarbWebsite</Text>
                 <TextInput mode='outlined' label={"Search"}/>
-                <categoryView/>
+                <CategoryView/>
                 <Divider/>
                 <Text style={{color: "white"}}>No Appointments...</Text>
                 <Button mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
             </View>
             <View style={styles.bottomPart}>
                 <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> </View>
-                <newBarbersView/>
+                <NewBarbersView/>
                 <View style={styles.titleContainer}><Text style={styles.title}>Recommended</Text></View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {recommendedBarbers.map( (recommendedBarber, index: number) => {
-                        return(
-                            <card style={styles.card}>
-                                <Card.Title title={recommendedBarber.title}/>
-                                <Card.Content>
-                                    <Text>{recommendedBarber.descr}</Text>
-                                </Card.Content>
-                                <Card.Cover source={{uri: recommendedBarber.imgUri}}/>
-                            </card>
-                        )})}
-                </ScrollView>
+                <RecommendedBarbersView/>
             </View>
         </ScrollView>
     )
