@@ -47,21 +47,21 @@ const styles: StyleSheet = {
 }
 
 export const HomeScreen = () => {
+    const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
+    const addNewCategory = (category) => {
+        setCategories([...categories, category])
+    }
     return (
         <ScrollView style={styles.container}>
             <View style={styles.topPart}>
                 <Text style={styles.topTitle}>BarbWebsite</Text>
                 <TextInput mode='outlined' label={"Search"}/>
                 <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
-                    <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log("1 Clicked")} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
-                    </TouchableRipple>
-                    <TouchableRipple style={styles.avatar} onPress={()=> console.log("2 Clicked")} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
-                    </TouchableRipple>
-                    <TouchableRipple style={styles.avatar} onPress={()=> console.log("Clicked")} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
-                    </TouchableRipple>
+                    {categories.map((newBarber: string, index: number) => { return (
+                        <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log(newBarber)} rippleColor="rgba(0, 0, 0, .32)">
+                            <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label={newBarber} />
+                        </TouchableRipple>
+                    )})}
                 </ScrollView>
                 <Divider/>
                 <Text style={{color: "white"}}>No Appointments...</Text>
