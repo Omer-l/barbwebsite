@@ -17,6 +17,7 @@ import {
 import GoogleButton from './components/GoogleSign';
 import { Icons } from './assets/my-icons';
 import { HomeScreen } from './components/Home';
+import {log} from "expo/build/devtools/logger";
 const Stack = createStackNavigator(); //register/login
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ const SignInScreen = () => {
         <Button  mode="elevated" onPress={() => setUser(true)}> Continue </Button>
         <Divider style={{marginTop: "60%"}} />
         <GoogleButton icon={Icons.google} />
-        <Button icon={Icons.facebook} mode="outlined"> Continue with Facebook </Button>
+        <Button icon={Icons.facebook} mode="outlined" onPress={() => console.log("facebook button pressed")}> Continue with Facebook </Button>
       </View>
   );
 }
