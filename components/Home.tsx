@@ -47,11 +47,24 @@ const styles: StyleSheet = {
     },
 }
 
-export const HomeScreen = () => {
+const categoryView = () => {
     const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
     const addNewCategory = (category) => {
         setCategories([...categories, category])
     };
+    return (
+
+        <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
+            {categories.map((newBarber: string, index: number) => { return (
+                    <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log(newBarber)} rippleColor="rgba(0, 0, 0, .32)">
+                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label={newBarber} />
+                    </TouchableRipple>
+                )})}
+        </ScrollView>
+    );
+}
+
+export const HomeScreen = () => {
 
     const [newBarbers, setNewBarbers] = useState([
         { title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
@@ -79,13 +92,7 @@ export const HomeScreen = () => {
             <View style={styles.topPart}>
                 <Text style={styles.topTitle}>BarbWebsite</Text>
                 <TextInput mode='outlined' label={"Search"}/>
-                <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
-                    {categories.map((newBarber: string, index: number) => { return (
-                        <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log(newBarber)} rippleColor="rgba(0, 0, 0, .32)">
-                            <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label={newBarber} />
-                        </TouchableRipple>
-                    )})}
-                </ScrollView>
+                <categoryView/>
                 <Divider/>
                 <Text style={{color: "white"}}>No Appointments...</Text>
                 <Button mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
