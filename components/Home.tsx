@@ -14,24 +14,26 @@ import {
 
 
 const styles: StyleSheet = {
-    container: {
-        flex: 1,
+    container: { //main container holding page
     },
     topPart: {
-        // flex: 1,
-        display: 'flex',
         backgroundColor:  DefaultTheme.colors.primary,
         alignItems: 'center',
         justifyContent: 'center',
+        gap: 20,
     },
     bottomPart: {
-        flex: 1,
         backgroundColor: DefaultTheme.colors.secondary,
         alignItems: 'center',
     },
     topTitle: {
         fontSize: 48,
         color: 'white',
+    },
+    titleContainer: {
+        alignItems: 'left',
+        width: '100%',
+        marginLeft: 60,
     },
     title: {
         fontSize: 48,
@@ -49,7 +51,7 @@ export const HomeScreen = () => {
         <ScrollView style={styles.container}>
             <View style={styles.topPart}>
                 <Text style={styles.topTitle}>BarbWebsite</Text>
-                <TextInput mode='outlined' outlineStyle={{borderRadius: "20%"}} label={"Search"}/>
+                <TextInput mode='outlined' label={"Search"}/>
                 <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
                     <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log("1 Clicked")} rippleColor="rgba(0, 0, 0, .32)">
                         <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
@@ -66,7 +68,7 @@ export const HomeScreen = () => {
                 <Button mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
             </View>
             <View style={styles.bottomPart}>
-                <Text style={styles.title}>New Barbers</Text>
+                <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> </View>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     <Card style={styles.card}>
                         <Card.Title title={"BarberHire 1"}/>
@@ -76,7 +78,7 @@ export const HomeScreen = () => {
                         <Card.Cover source={{uri: "https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg"}}/>
                     </Card>
                 </ScrollView>
-                <Text style={styles.title}>Recommended</Text>
+                <View style={styles.titleContainer}><Text style={styles.title}>Recommended</Text></View>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     <Card style={styles.card}>
                         <Card.Title title={"Recommended 1"}/>
