@@ -23,6 +23,7 @@ const styles: StyleSheet = {
         gap: 20,
     },
     bottomPart: {
+        gap: 10,
         backgroundColor: DefaultTheme.colors.secondary,
         alignItems: 'center',
     },
@@ -36,7 +37,7 @@ const styles: StyleSheet = {
         marginLeft: 60,
     },
     title: {
-        fontSize: 48,
+        fontSize: 30,
     },
     avatar: {
         // width: 80,
@@ -50,6 +51,18 @@ export const HomeScreen = () => {
     const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
     const addNewCategory = (category) => {
         setCategories([...categories, category])
+    }
+
+    const [newBarbers, setNewBarbers] = useState([{title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber2', descr: 'Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber3', descr: 'Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber4', descr: 'Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber5', descr: 'Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber6', descr: 'Barber 6 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber7', descr: 'Barber 7 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'}
+    ]);
+    const addNewBarbers = (newBarber) => {
+        setNewBarbers([...newBarbers, newBarber]);
     }
     return (
         <ScrollView style={styles.container}>
@@ -69,13 +82,23 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.bottomPart}>
                 <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> </View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView style={{gap: 50}} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {newBarbers.map( (newBarber, index: number) => {
+                        return(
+                            <card style={styles.card}>
+                                <Card.Title title={newBarber.title}/>
+                                <Card.Content>
+                                    <Text>{newBarber.descr}</Text>
+                                </Card.Content>
+                                <Card.Cover source={{uri: newBarber.imgUri}}/>
+                            </card>
+                        )})}
                     <Card style={styles.card}>
                         <Card.Title title={"BarberHire 1"}/>
                         <Card.Content>
                             <Text>Lorem Ipsum content.</Text>
                         </Card.Content>
-                        <Card.Cover source={{uri: "https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg"}}/>
+                        <Card.Cover source={{uri: ""}}/>
                     </Card>
                 </ScrollView>
                 <View style={styles.titleContainer}><Text style={styles.title}>Recommended</Text></View>
