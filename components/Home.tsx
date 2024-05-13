@@ -64,8 +64,7 @@ const categoryView = () => {
     );
 }
 
-export const HomeScreen = () => {
-
+const newBarbersView = () => {
     const [newBarbers, setNewBarbers] = useState([
         { title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber2', descr: 'Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
@@ -76,6 +75,24 @@ export const HomeScreen = () => {
     const addNewBarbers = (newBarber) => {
         setNewBarbers([...newBarbers, newBarber]);
     };
+    return (
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        {newBarbers.map( (newBarber, index: number) => {
+            return(
+                <card style={styles.card}>
+                    <Card.Title title={newBarber.title}/>
+                    <Card.Content>
+                        <Text>{newBarber.descr}</Text>
+                    </Card.Content>
+                    <Card.Cover source={{uri: newBarber.imgUri}}/>
+                </card>
+            )})}
+    </ScrollView>
+    );
+}
+
+
+export const HomeScreen = () => {
 
     const [recommendedBarbers, setRecommendedBarbers] = useState([
         { title: 'Barber1', descr: 'Recommended Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
@@ -85,7 +102,7 @@ export const HomeScreen = () => {
         { title: 'Barber5', descr: 'Recommended Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
     ]);
     const addRecommendedBarber = (newRecommendedBarber) => {
-        setNewBarbers([...newRecommendedBarber, newRecommendedBarber]);
+        setRecommendedBarbers([...newRecommendedBarber, newRecommendedBarber]);
     };
     return (
         <ScrollView style={styles.container}>
@@ -99,18 +116,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.bottomPart}>
                 <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> </View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {newBarbers.map( (newBarber, index: number) => {
-                        return(
-                            <card style={styles.card}>
-                                <Card.Title title={newBarber.title}/>
-                                <Card.Content>
-                                    <Text>{newBarber.descr}</Text>
-                                </Card.Content>
-                                <Card.Cover source={{uri: newBarber.imgUri}}/>
-                            </card>
-                        )})}
-                </ScrollView>
+                <newBarbersView/>
                 <View style={styles.titleContainer}><Text style={styles.title}>Recommended</Text></View>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {recommendedBarbers.map( (recommendedBarber, index: number) => {
