@@ -9,7 +9,7 @@ import {
     Divider,
     Provider as PaperProvider,
     MD3LightTheme as DefaultTheme,
-    TouchableRipple
+    TouchableRipple,
 } from 'react-native-paper';
 
 
@@ -20,13 +20,13 @@ const styles: StyleSheet = {
     topPart: {
         // flex: 1,
         display: 'flex',
-        backgroundColor: 'black',
+        backgroundColor:  DefaultTheme.colors.primary,
         alignItems: 'center',
         justifyContent: 'center',
     },
     bottomPart: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: DefaultTheme.colors.secondary,
         alignItems: 'center',
     },
     topTitle: {
@@ -38,7 +38,7 @@ const styles: StyleSheet = {
     },
     avatar: {
         // width: 80,
-        height: 80,
+        borderRadius: '50%',
     },
     card: {
     },
@@ -49,16 +49,16 @@ export const HomeScreen = () => {
         <ScrollView style={styles.container}>
             <View style={styles.topPart}>
                 <Text style={styles.topTitle}>BarbWebsite</Text>
-                <TextInput label={"Search"}/>
+                <TextInput mode='outlined' outlineStyle={{borderRadius: "20%"}} label={"Search"}/>
                 <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
-                    <TouchableRipple style={styles.avatar} onPress={()=> console.log("1 Clicked")} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text size={64} label="HAIR" />
+                    <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log("1 Clicked")} rippleColor="rgba(0, 0, 0, .32)">
+                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
                     </TouchableRipple>
                     <TouchableRipple style={styles.avatar} onPress={()=> console.log("2 Clicked")} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text size={64} label="HAIR" />
+                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
                     </TouchableRipple>
                     <TouchableRipple style={styles.avatar} onPress={()=> console.log("Clicked")} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text size={64} label="HAIR" />
+                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label="HAIR" />
                     </TouchableRipple>
                 </ScrollView>
                 <Divider/>
