@@ -51,19 +51,29 @@ export const HomeScreen = () => {
     const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
     const addNewCategory = (category) => {
         setCategories([...categories, category])
-    }
+    };
 
-    const [newBarbers, setNewBarbers] = useState([{title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+    const [newBarbers, setNewBarbers] = useState([
+        { title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber2', descr: 'Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber3', descr: 'Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber4', descr: 'Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { title: 'Barber5', descr: 'Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber6', descr: 'Barber 6 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber7', descr: 'Barber 7 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'}
     ]);
     const addNewBarbers = (newBarber) => {
         setNewBarbers([...newBarbers, newBarber]);
-    }
+    };
+
+    const [recommendedBarbers, setRecommendedBarbers] = useState([
+        { title: 'Barber1', descr: 'Recommended Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber2', descr: 'Recommended Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber3', descr: 'Recommended Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber4', descr: 'Recommended Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { title: 'Barber5', descr: 'Recommended Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+    ]);
+    const addRecommendedBarber = (newRecommendedBarber) => {
+        setNewBarbers([...newRecommendedBarber, newRecommendedBarber]);
+    };
     return (
         <ScrollView style={styles.container}>
             <View style={styles.topPart}>
@@ -82,7 +92,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.bottomPart}>
                 <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> </View>
-                <ScrollView style={{gap: 50}} horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {newBarbers.map( (newBarber, index: number) => {
                         return(
                             <card style={styles.card}>
@@ -93,23 +103,19 @@ export const HomeScreen = () => {
                                 <Card.Cover source={{uri: newBarber.imgUri}}/>
                             </card>
                         )})}
-                    <Card style={styles.card}>
-                        <Card.Title title={"BarberHire 1"}/>
-                        <Card.Content>
-                            <Text>Lorem Ipsum content.</Text>
-                        </Card.Content>
-                        <Card.Cover source={{uri: ""}}/>
-                    </Card>
                 </ScrollView>
                 <View style={styles.titleContainer}><Text style={styles.title}>Recommended</Text></View>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    <Card style={styles.card}>
-                        <Card.Title title={"Recommended 1"}/>
-                        <Card.Content>
-                            <Text>Lorem Ipsum content.</Text>
-                        </Card.Content>
-                        <Card.Cover source={{uri: "https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg"}}/>
-                    </Card>
+                    {recommendedBarbers.map( (recommendedBarber, index: number) => {
+                        return(
+                            <card style={styles.card}>
+                                <Card.Title title={recommendedBarber.title}/>
+                                <Card.Content>
+                                    <Text>{recommendedBarber.descr}</Text>
+                                </Card.Content>
+                                <Card.Cover source={{uri: recommendedBarber.imgUri}}/>
+                            </card>
+                        )})}
                 </ScrollView>
             </View>
         </ScrollView>
