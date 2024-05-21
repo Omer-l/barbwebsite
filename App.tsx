@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
-    borderColor: 'red',
+    borderColor: 'black',
     overflow: 'hidden',
-    backgroundColor: 'black'
+    backgroundColor: 'white'
   },
   icons: {
     marginTop: 200
