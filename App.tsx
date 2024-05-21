@@ -14,6 +14,7 @@ import {
     MD3LightTheme as DefaultTheme,
     TouchableRipple
 } from 'react-native-paper';
+
 import GoogleButton from './components/GoogleSign';
 import { Icons } from './assets/my-icons';
 import { HomeScreen } from './components/Home';
@@ -29,18 +30,63 @@ const AuthContext = createContext({
 
 // -------------------- BEFORE SIGN IN --------------------
 
+const styles = StyleSheet.create({
+  mainContainer:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 30,
+    marginTop: 50
+
+  },
+  input: {
+    borderColor:'black',
+    backgroundColor:'#D3D3D3',
+    marginTop: 45,
+    width:300,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    fontSize:15,
+    borderRadius: 50,
+    borderTopRightRadius: 50,
+    borderTopLeftRadius: 50,
+    borderColor: 'red',
+    overflow: 'hidden',
+    backgroundColor: 'black'
+  },
+  icons: {
+    marginTop: 200
+  }
+})
+
+const InputComponent = (props) => {
+  return (
+      <TextInput 
+        style={styles.input}
+        label={props.label} 
+        placeholder={props.placeholder}
+        secureTextEntry={props.password}
+      />
+  )
+}
+
+
 const SignInScreen = () => {
   const { setUser } = useContext(AuthContext);
-  // const [email, setEmail] = useState('');1
+  // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
   return (
-      <View style={{gap: 20}}>
-        <TextInput label="Email" />
-        <TextInput label="Password" />
+      <View style={styles.container} >
+        <InputComponent label='Email' />
+        <InputComponent label='Password' password={true}/>
         <Button  mode="elevated" onPress={() => setUser(true)}> Continue </Button>
-        <Divider style={{marginTop: "60%"}} />
-        <GoogleButton icon={Icons.google} />
-        <Button icon={Icons.facebook} mode="outlined" onPress={() => console.log("facebook button pressed")}> Continue with Facebook </Button>
+        <View style={styles.icons}>
+          <GoogleButton  icon={Icons.google} />
+          <Button style={{marginTop: 20}} icon={Icons.facebook} mode="outlined" onPress={() => console.log("facebook button pressed")}> Continue with Facebook </Button>
+        </View>
       </View>
   );
 }

@@ -12,40 +12,10 @@ import {
     TouchableRipple,
 } from 'react-native-paper';
 
+import {LinearGradient} from 'react-native-linear-gradient';
 
-const styles: StyleSheet = {
-    container: { //main container holding page
-    },
-    topPart: {
-        backgroundColor:  DefaultTheme.colors.primary,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 20,
-    },
-    bottomPart: {
-        gap: 10,
-        backgroundColor: DefaultTheme.colors.secondary,
-        alignItems: 'center',
-    },
-    topTitle: {
-        fontSize: 48,
-        color: 'white',
-    },
-    titleContainer: {
-        alignItems: 'left',
-        width: '100%',
-        marginLeft: 60,
-    },
-    title: {
-        fontSize: 30,
-    },
-    avatar: {
-        // width: 80,
-        borderRadius: '50%',
-    },
-    card: {
-    },
-}
+
+
 
 const CategoryView = () => {
     const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
@@ -117,11 +87,14 @@ const RecommendedBarbersView = () => {
     );
 }
 
+
+
 export const HomeScreen = () => {
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.topPart}>
+        <ScrollView style={styles.container} headermode>
+            <View colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.topPart}>
+            {/* <LinearGradient colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.linearGradient}></LinearGradient> */}
                 <Text style={styles.topTitle}>BarbWebsite</Text>
                 <TextInput mode='outlined' label={"Search"}/>
                 <CategoryView/>
@@ -130,11 +103,56 @@ export const HomeScreen = () => {
                 <Button mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
             </View>
             <View style={styles.bottomPart}>
-                <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> </View>
+                <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> 
+            </View>
                 <NewBarbersView/>
-                <View style={styles.titleContainer}><Text style={styles.title}>Recommended</Text></View>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.title}>Recommended</Text>
+                </View>
                 <RecommendedBarbersView/>
             </View>
         </ScrollView>
     )
+}
+
+
+
+const styles: StyleSheet = {
+    container: { //main container holding page
+    },
+    linearGradient: {
+        flex: 1,
+        paddingLeft: 15,
+        paddingRight: 15,
+        borderRadius: 5
+      },
+    topPart: {
+        backgroundColor:  '#3E3E3E',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 20,
+    },
+    bottomPart: {
+        gap: 10,
+        backgroundColor: DefaultTheme.colors.secondary,
+        alignItems: 'center',
+    },
+    topTitle: {
+        fontSize: 48,
+        color: 'white',
+    },
+    titleContainer: {
+        alignItems: 'left',
+        width: '100%',
+        marginLeft: 60,
+    },
+    title: {
+        fontSize: 30,
+    },
+    avatar: {
+        // width: 80,
+        borderRadius: '50%',
+    },
+    card: {
+    },
 }
