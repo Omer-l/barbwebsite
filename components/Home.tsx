@@ -17,22 +17,22 @@ import {LinearGradient} from 'react-native-linear-gradient';
 
 
 
-const CategoryView = () => {
-    const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
-    const addNewCategory = (category) => {
-        setCategories([...categories, category])
-    };
-    return (
-
-        <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
-            {categories.map((newBarber: string, index: number) => { return (
-                    <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log(newBarber)} rippleColor="rgba(0, 0, 0, .32)">
-                        <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label={newBarber} />
-                    </TouchableRipple>
-                )})}
-        </ScrollView>
-    );
-}
+// const CategoryView = () => {
+//     const [categories, setCategories] = useState(['C1', 'C2', 'C3']);
+//     const addNewCategory = (category) => {
+//         setCategories([...categories, category])
+//     };
+//     return (
+//
+//         <ScrollView horizontal={true} showHorizontalScrollIndicator={false}>
+//             {categories.map((newBarber: string, index: number) => { return (
+//                     <TouchableRipple borderless={true} style={styles.avatar} onPress={()=> console.log(newBarber)} rippleColor="rgba(0, 0, 0, .32)">
+//                         <Avatar.Text style={{backgroundColor: DefaultTheme.colors.tertiary}} size={64} label={newBarber} />
+//                     </TouchableRipple>
+//                 )})}
+//         </ScrollView>
+//     );
+// }
 
 const NewBarbersView = () => {
     const [newBarbers, setNewBarbers] = useState([
@@ -49,13 +49,13 @@ const NewBarbersView = () => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {newBarbers.map( (newBarber, index: number) => {
             return(
-                <card style={styles.card}>
+                <Card style={styles.card} mode={"outlined"}>
+                    <Card.Cover style={{width: 200, height: 130}} source={{uri: newBarber.imgUri}}/>
                     <Card.Title title={newBarber.title}/>
                     <Card.Content>
                         <Text>{newBarber.descr}</Text>
                     </Card.Content>
-                    <Card.Cover source={{uri: newBarber.imgUri}}/>
-                </card>
+                </Card>
             )})}
         </ScrollView>
     );
@@ -75,19 +75,17 @@ const RecommendedBarbersView = () => {
     return ( <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {recommendedBarbers.map( (recommendedBarber, index: number) => {
             return(
-                <card style={styles.card}>
+                <Card style={styles.card}>
+                    <Card.Cover style={{width: 200, height: 130}} source={{uri: recommendedBarber.imgUri}}/>
                     <Card.Title title={recommendedBarber.title}/>
                     <Card.Content>
                         <Text>{recommendedBarber.descr}</Text>
                     </Card.Content>
-                    <Card.Cover source={{uri: recommendedBarber.imgUri}}/>
-                </card>
+                </Card>
             )})}
     </ScrollView>
     );
 }
-
-
 
 export const HomeScreen = () => {
 
@@ -97,10 +95,12 @@ export const HomeScreen = () => {
             {/* <LinearGradient colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.linearGradient}></LinearGradient> */}
                 <Text style={styles.topTitle}>BarbWebsite</Text>
                 <TextInput mode='outlined' label={"Search"}/>
-                <CategoryView/>
-                <Divider/>
+                {/*<CategoryView/>*/}
+                <View style={{width: "100%"}}>
+                    <Divider />
+                </View>
                 <Text style={{color: "white"}}>No Appointments...</Text>
-                <Button mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
+                <Button style={{marginBottom: 20}} mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
             </View>
             <View style={styles.bottomPart}>
                 <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> 
@@ -139,7 +139,7 @@ const styles: StyleSheet = {
     },
     topTitle: {
         fontSize: 48,
-        color: 'white',
+        color: 'lightgray',
     },
     titleContainer: {
         alignItems: 'left',
@@ -154,5 +154,8 @@ const styles: StyleSheet = {
         borderRadius: '50%',
     },
     card: {
+        marginLeft: 10,
+        width: 200,
+        height: 250,
     },
 }
