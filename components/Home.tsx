@@ -11,6 +11,7 @@ import {
     MD3LightTheme as DefaultTheme,
     TouchableRipple,
 } from 'react-native-paper';
+import customTheme from './CustomTheme';
 
 import {LinearGradient} from 'react-native-linear-gradient';
 
@@ -133,14 +134,14 @@ const styles: StyleSheet = {
         borderRadius: 5
       },
     topPart: {
-        backgroundColor:  '#3E3E3E',
+        backgroundColor:  customTheme.colors.secondary,
         alignItems: 'center',
         justifyContent: 'center',
         gap: 20,
     },
     bottomPart: {
         gap: 10,
-        backgroundColor: DefaultTheme.colors.secondary,
+        backgroundColor: customTheme.colors.primary,
     },
     topTitle: {
         fontSize: 48,
@@ -152,6 +153,7 @@ const styles: StyleSheet = {
         marginLeft: 60,
     },
     title: {
+        color: customTheme.colors.primary,
         fontSize: 30,
     },
     avatar: {
