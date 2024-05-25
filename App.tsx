@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderColor:'black',
-    backgroundColor:'#D3D3D3',
+    backgroundColor:'white',
     marginTop: 45,
     width:300,
     borderWidth: 1,
@@ -53,9 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
-    borderColor: 'black',
     overflow: 'hidden',
-    backgroundColor: 'white'
   },
   icons: {
     marginTop: 200

@@ -46,16 +46,18 @@ const NewBarbersView = () => {
         setNewBarbers([...newBarbers, newBarber]);
     };
     return (
-        <ScrollView styles={{paddingVertical: 10,}} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView styles={styles.cardScrollView} horizontal={true} showsHorizontalScrollIndicator={false}>
         {newBarbers.map( (newBarber) => {
             return(
-                <Card key={newBarber.key} style={styles.card} mode={"outlined"}>
-                    <Card.Cover style={{width: 200, height: 130}} source={{uri: newBarber.imgUri}}/>
-                    <Card.Content>
-                        <Card.Title title={newBarber.title}/>
-                        <Text>{newBarber.descr}</Text>
-                    </Card.Content>
-                </Card>
+                <View key={newBarber.key} style={styles.cardContainer}>
+                    <Card style={styles.card} mode={"outlined"}>
+                        <Card.Cover style={styles.cardCover} source={{uri: newBarber.imgUri}}/>
+                        <Card.Content>
+                            <Card.Title title={newBarber.title}/>
+                            <Text>{newBarber.descr}</Text>
+                        </Card.Content>
+                    </Card>
+                </View>
             )})}
         </ScrollView>
     );
@@ -67,21 +69,24 @@ const RecommendedBarbersView = () => {
         { key: 2, title: 'Barber2', descr: 'Recommended Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { key: 3, title: 'Barber3', descr: 'Recommended Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
         { key: 4, title: 'Barber4', descr: 'Recommended Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { key: 5, title: 'Barber5'g, descr: 'Recommended Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 5, title: 'Barber5', descr: 'Recommended Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
     ]);
     const addRecommendedBarber = (newRecommendedBarber) => {
         setRecommendedBarbers([...newRecommendedBarber, newRecommendedBarber]);
     };
-    return ( <ScrollView style={{height: 250}} horizontal={true} showsHorizontalScrollIndicator={false}>
+    return (
+        <ScrollView styles={styles.cardScrollView} horizontal={true} showsHorizontalScrollIndicator={false}>
         {recommendedBarbers.map( (recommendedBarber) => {
             return(
-                <Card key={recommendedBarber.key} style={styles.card}>
-                    <Card.Cover style={{width: 200, height: 130}} source={{uri: recommendedBarber.imgUri}}/>
-                    <Card.Content>
-                        <Card.Title title={recommendedBarber.title}/>
-                        <Text>{recommendedBarber.descr}</Text>
-                    </Card.Content>
-                </Card>
+                <View key={recommendedBarber.key} style={styles.cardContainer}>
+                    <Card style={styles.card}>
+                        <Card.Cover style={styles.cardCover} source={{uri: recommendedBarber.imgUri}}/>
+                        <Card.Content>
+                            <Card.Title title={recommendedBarber.title}/>
+                            <Text>{recommendedBarber.descr}</Text>
+                        </Card.Content>
+                    </Card>
+                </View>
             )})}
     </ScrollView>
     );
@@ -103,8 +108,9 @@ export const HomeScreen = () => {
                 <Button style={{marginBottom: 20}} mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
             </View>
             <View style={styles.bottomPart}>
-                <View style={styles.titleContainer}> <Text style={styles.title}>New Barbers</Text> 
-            </View>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.title}>New Barbers</Text>
+                </View>
                 <NewBarbersView/>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>Recommended</Text>
@@ -135,7 +141,6 @@ const styles: StyleSheet = {
     bottomPart: {
         gap: 10,
         backgroundColor: DefaultTheme.colors.secondary,
-        alignItems: 'center',
     },
     topTitle: {
         fontSize: 48,
@@ -153,9 +158,18 @@ const styles: StyleSheet = {
         // width: 80,
         borderRadius: '50%',
     },
+    cardScrollView: {
+        paddingVertical: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    cardContainer: {
+        marginHorizontal: 10,
+    },
     card: {
-        marginLeft: 10,
         width: 200,
-        height: 250,
+    },
+    cardCover: {
+        height: 130,
     },
 }
