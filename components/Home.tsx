@@ -36,23 +36,23 @@ import {LinearGradient} from 'react-native-linear-gradient';
 
 const NewBarbersView = () => {
     const [newBarbers, setNewBarbers] = useState([
-        { title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber2', descr: 'Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber3', descr: 'Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber4', descr: 'Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber5', descr: 'Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 1, title: 'Barber1', descr: 'Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 2, title: 'Barber2', descr: 'Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 3, title: 'Barber3', descr: 'Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 4, title: 'Barber4', descr: 'Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 5, title: 'Barber5', descr: 'Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
     ]);
     const addNewBarbers = (newBarber) => {
         setNewBarbers([...newBarbers, newBarber]);
     };
     return (
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {newBarbers.map( (newBarber, index: number) => {
+        <ScrollView styles={{paddingVertical: 10,}} horizontal={true} showsHorizontalScrollIndicator={false}>
+        {newBarbers.map( (newBarber) => {
             return(
-                <Card style={styles.card} mode={"outlined"}>
+                <Card key={newBarber.key} style={styles.card} mode={"outlined"}>
                     <Card.Cover style={{width: 200, height: 130}} source={{uri: newBarber.imgUri}}/>
-                    <Card.Title title={newBarber.title}/>
                     <Card.Content>
+                        <Card.Title title={newBarber.title}/>
                         <Text>{newBarber.descr}</Text>
                     </Card.Content>
                 </Card>
@@ -63,22 +63,22 @@ const NewBarbersView = () => {
 
 const RecommendedBarbersView = () => {
     const [recommendedBarbers, setRecommendedBarbers] = useState([
-        { title: 'Barber1', descr: 'Recommended Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber2', descr: 'Recommended Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber3', descr: 'Recommended Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber4', descr: 'Recommended Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
-        { title: 'Barber5', descr: 'Recommended Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 1, title: 'Barber1', descr: 'Recommended Barber 1 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 2, title: 'Barber2', descr: 'Recommended Barber 2 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 3, title: 'Barber3', descr: 'Recommended Barber 3 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 4, title: 'Barber4', descr: 'Recommended Barber 4 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
+        { key: 5, title: 'Barber5'g, descr: 'Recommended Barber 5 Descr', imgUri: 'https://heygoldie.com/blog/wp-content/uploads/2021/12/barber-shop-decor-ideas.jpg'},
     ]);
     const addRecommendedBarber = (newRecommendedBarber) => {
         setRecommendedBarbers([...newRecommendedBarber, newRecommendedBarber]);
     };
-    return ( <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {recommendedBarbers.map( (recommendedBarber, index: number) => {
+    return ( <ScrollView style={{height: 250}} horizontal={true} showsHorizontalScrollIndicator={false}>
+        {recommendedBarbers.map( (recommendedBarber) => {
             return(
-                <Card style={styles.card}>
+                <Card key={recommendedBarber.key} style={styles.card}>
                     <Card.Cover style={{width: 200, height: 130}} source={{uri: recommendedBarber.imgUri}}/>
-                    <Card.Title title={recommendedBarber.title}/>
                     <Card.Content>
+                        <Card.Title title={recommendedBarber.title}/>
                         <Text>{recommendedBarber.descr}</Text>
                     </Card.Content>
                 </Card>
@@ -90,7 +90,7 @@ const RecommendedBarbersView = () => {
 export const HomeScreen = () => {
 
     return (
-        <ScrollView style={styles.container} headermode>
+        <ScrollView style={styles.container}>
             <View colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.topPart}>
             {/* <LinearGradient colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.linearGradient}></LinearGradient> */}
                 <Text style={styles.topTitle}>BarbWebsite</Text>
