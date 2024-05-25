@@ -19,6 +19,7 @@ import GoogleButton from './components/GoogleSign';
 import { Icons } from './assets/my-icons';
 import { HomeScreen } from './components/Home';
 import {log} from "expo/build/devtools/logger";
+import customTheme from "./components/CustomTheme";
 const Stack = createStackNavigator(); //register/login
 const Tab = createBottomTabNavigator();
 
@@ -43,8 +44,8 @@ const styles = StyleSheet.create({
 
   },
   input: {
-    borderColor:'black',
-    backgroundColor:'white',
+    borderColor: customTheme.colors.secondary,
+    backgroundColor: customTheme.colors.primary,
     marginTop: 45,
     width:300,
     borderWidth: 1,
