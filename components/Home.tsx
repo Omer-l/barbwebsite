@@ -51,10 +51,10 @@ const NewBarbersView = () => {
         {newBarbers.map( (newBarber) => {
             return(
                 <View key={newBarber.key} style={styles.cardContainer}>
-                    <Card style={styles.card} mode={"outlined"}>
+                    <Card style={styles.card} mode={"elevated"}>
                         <Card.Cover style={styles.cardCover} source={{uri: newBarber.imgUri}}/>
                         <Card.Content>
-                            <Card.Title title={newBarber.title}/>
+                            <Text style={styles.cardTitle}>{newBarber.title}</Text>
                             <Text>{newBarber.descr}</Text>
                         </Card.Content>
                     </Card>
@@ -76,14 +76,14 @@ const RecommendedBarbersView = () => {
         setRecommendedBarbers([...newRecommendedBarber, newRecommendedBarber]);
     };
     return (
-        <ScrollView styles={styles.cardScrollView} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView mode={"elevated"} styles={styles.cardScrollView} horizontal={true} showsHorizontalScrollIndicator={false}>
         {recommendedBarbers.map( (recommendedBarber) => {
             return(
                 <View key={recommendedBarber.key} style={styles.cardContainer}>
                     <Card style={styles.card}>
                         <Card.Cover style={styles.cardCover} source={{uri: recommendedBarber.imgUri}}/>
                         <Card.Content>
-                            <Card.Title title={recommendedBarber.title}/>
+                            <Text style={styles.cardTitle}>{recommendedBarber.title}</Text>
                             <Text>{recommendedBarber.descr}</Text>
                         </Card.Content>
                     </Card>
@@ -109,13 +109,9 @@ export const HomeScreen = () => {
                 <Button style={{marginBottom: 20}} mode={"elevated"} onPress={() => console.log("Go to Appointments clicked")}>Go to Appointments</Button>
             </View>
             <View style={styles.bottomPart}>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title}>New Barbers</Text>
-                </View>
+                <Text style={styles.title}>New Barbers</Text>
                 <NewBarbersView/>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title}>Recommended</Text>
-                </View>
+                <Text style={styles.title}>Recommended</Text>
                 <RecommendedBarbersView/>
             </View>
         </ScrollView>
@@ -147,17 +143,12 @@ const styles: StyleSheet = {
         fontSize: 48,
         color: 'lightgray',
     },
-    titleContainer: {
-        alignItems: 'left',
-        width: '100%',
-        marginLeft: 60,
-    },
     title: {
-        color: customTheme.colors.primary,
+        color: customTheme.colors.secondary,
         fontSize: 30,
+        marginLeft: 10,
     },
     avatar: {
-        // width: 80,
         borderRadius: '50%',
     },
     cardScrollView: {
@@ -173,5 +164,8 @@ const styles: StyleSheet = {
     },
     cardCover: {
         height: 130,
+    },
+    cardTitle: {
+        fontWeight: "bold",
     },
 }
