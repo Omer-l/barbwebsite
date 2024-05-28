@@ -19,7 +19,7 @@ import GoogleButton from './components/GoogleSign';
 import { Icons } from './assets/my-icons';
 import { HomeScreen } from './components/Home';
 import {log} from "expo/build/devtools/logger";
-import customTheme from "./components/CustomTheme";
+import {CustomTheme, CustomStyles} from "./components/CustomThemeAndComponents";
 const Stack = createStackNavigator(); //register/login
 const Tab = createBottomTabNavigator();
 
@@ -43,19 +43,6 @@ const styles = StyleSheet.create({
     marginTop: 50
 
   },
-  input: {
-    borderColor: customTheme.colors.secondary,
-    backgroundColor: customTheme.colors.primary,
-    marginTop: 45,
-    width:300,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    fontSize:15,
-    borderRadius: 50,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    overflow: 'hidden',
-  },
   icons: {
     marginTop: 200
   }
@@ -63,9 +50,9 @@ const styles = StyleSheet.create({
 
 const InputComponent = (props) => {
   return (
-      <TextInput 
-        style={styles.input}
-        label={props.label} 
+      <TextInput
+        style={CustomStyles.input}
+        label={props.label}
         placeholder={props.placeholder}
         secureTextEntry={props.password}
       />

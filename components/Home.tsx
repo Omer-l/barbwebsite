@@ -11,7 +11,7 @@ import {
     MD3LightTheme as DefaultTheme,
     TouchableRipple,
 } from 'react-native-paper';
-import customTheme from './CustomTheme';
+import {CustomTheme} from './CustomThemeAndComponents';
 
 import {LinearGradient} from 'react-native-linear-gradient';
 
@@ -100,7 +100,7 @@ export const HomeScreen = () => {
             <View colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.topPart}>
             {/* <LinearGradient colors={['#DFEFEF', '#B6E6E6', '#7FE2E2']} style={styles.linearGradient}></LinearGradient> */}
                 <Text style={styles.topTitle}>BarbWebsite</Text>
-                <TextInput mode='outlined' label={"Search"}/>
+                <TextInput dense={false} mode='flat' label={"Search"} style={styles.inputBorder}/>
                 {/*<CategoryView/>*/}
                 <View style={{width: "100%"}}>
                     <Divider />
@@ -130,23 +130,28 @@ const styles: StyleSheet = {
         borderRadius: 5
       },
     topPart: {
-        backgroundColor:  customTheme.colors.secondary,
+        backgroundColor:  CustomTheme.colors.secondary,
         alignItems: 'center',
         justifyContent: 'center',
         gap: 20,
     },
     bottomPart: {
         gap: 10,
-        backgroundColor: customTheme.colors.primary,
+        backgroundColor: CustomTheme.colors.primary,
     },
     topTitle: {
         fontSize: 48,
         color: 'lightgray',
     },
     title: {
-        color: customTheme.colors.secondary,
+        color: CustomTheme.colors.secondary,
         fontSize: 30,
         marginLeft: 10,
+    },
+    inputBorder: {
+        borderRadius: 50,
+        borderTopRightRadius: 50,
+        borderTopLeftRadius: 50,
     },
     avatar: {
         borderRadius: '50%',
